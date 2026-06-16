@@ -1,256 +1,1046 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Migration Proposal — talenttools.com.au</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font-sans);color:var(--color-text-primary)}
-.hero{padding:3rem 0 2rem;border-bottom:0.5px solid var(--color-border-tertiary)}
-.tag{display:inline-block;font-size:11px;font-weight:500;background:var(--color-background-info);color:var(--color-text-info);padding:4px 12px;border-radius:20px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:1rem}
-.hero h1{font-size:28px;font-weight:500;line-height:1.25;margin-bottom:0.75rem;color:var(--color-text-primary)}
-.hero h1 span{color:var(--color-text-info)}
-.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.25rem}
-.meta-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-secondary)}
-.meta-item i{font-size:15px}
-.section{padding:2rem 0;border-bottom:0.5px solid var(--color-border-tertiary)}
-.section-label{font-size:11px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1rem}
-.section h2{font-size:18px;font-weight:500;margin-bottom:0.5rem}
-.section p{font-size:14px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:0.75rem}
-.free-offer{background:var(--color-background-success);border:0.5px solid var(--color-border-success);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin:1.5rem 0;display:flex;gap:1rem;align-items:flex-start}
-.free-offer i{font-size:22px;color:var(--color-text-success);flex-shrink:0;margin-top:2px}
-.free-offer h3{font-size:14px;font-weight:500;color:var(--color-text-success);margin-bottom:4px}
-.free-offer p{font-size:13px;color:var(--color-text-success);margin:0;line-height:1.6}
-.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:1.25rem}
-.step-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem}
-.step-num{font-size:11px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:8px}
-.step-card h4{font-size:14px;font-weight:500;margin-bottom:4px}
-.step-card p{font-size:12px;color:var(--color-text-secondary);line-height:1.6;margin:0}
-.timeline{margin-top:1.25rem}
-.tl-row{display:flex;gap:1rem;align-items:flex-start;padding:0.85rem 0;border-bottom:0.5px solid var(--color-border-tertiary)}
-.tl-row:last-child{border-bottom:none}
-.tl-week{font-size:11px;font-weight:500;color:var(--color-text-info);background:var(--color-background-info);padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px}
-.tl-content h4{font-size:13px;font-weight:500;margin-bottom:2px}
-.tl-content p{font-size:12px;color:var(--color-text-secondary);margin:0;line-height:1.6}
-.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:1.25rem}
-.proof-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem}
-.proof-num{font-size:24px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
-.proof-label{font-size:12px;color:var(--color-text-secondary)}
-.skills-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem}
-.skill-pill{font-size:12px;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:20px;padding:4px 12px;color:var(--color-text-secondary)}
-.risk-list{margin-top:1.25rem;display:flex;flex-direction:column;gap:10px}
-.risk-item{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md)}
-.risk-item i{font-size:18px;flex-shrink:0;margin-top:1px}
-.risk-item h4{font-size:13px;font-weight:500;margin-bottom:2px}
-.risk-item p{font-size:12px;color:var(--color-text-secondary);margin:0;line-height:1.6}
-.risk-item.safe i{color:var(--color-text-success)}
-.risk-item.warn i{color:var(--color-text-warning)}
-.cta-block{padding:2rem 0;text-align:center}
-.cta-block h2{font-size:20px;font-weight:500;margin-bottom:0.5rem}
-.cta-block p{font-size:14px;color:var(--color-text-secondary);margin-bottom:1.5rem}
-.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--color-text-primary);color:var(--color-background-primary);font-size:14px;font-weight:500;padding:10px 24px;border-radius:var(--border-radius-md);border:none;cursor:pointer}
-.portfolio-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-info);text-decoration:none;margin-top:0.5rem}
-.q-box{background:var(--color-background-secondary);border-left:3px solid var(--color-border-info);border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:1rem 1.25rem;margin-top:1.25rem}
-.q-box p{font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.7;font-style:italic}
-.q-box span{display:block;font-size:12px;font-weight:500;color:var(--color-text-tertiary);margin-top:6px}
+  /* ─── Reset ─────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ─── Tokens ─────────────────────────────────────────── */
+  :root {
+    --ink:       #0B1120;
+    --slate:     #1C2A3F;
+    --slate-mid: #263548;
+    --accent:    #2E7D6B;
+    --accent-lt: #3A9B86;
+    --accent-dim:#1B4D42;
+    --mint:      #E6F4F1;
+    --mint-deep: #B8E0D8;
+    --off-white: #F5F7FA;
+    --muted:     #9AADC4;
+    --border:    rgba(154,173,196,0.15);
+    --warn:      #C97B2A;
+    --warn-bg:   rgba(201,123,42,0.08);
+    --safe:      #2E7D6B;
+    --safe-bg:   rgba(46,125,107,0.08);
+
+    --ff-display: 'DM Serif Display', serif;
+    --ff-body:    'Inter', sans-serif;
+    --ff-mono:    'JetBrains Mono', monospace;
+
+    --radius:   6px;
+    --radius-lg:12px;
+    --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* ─── Base ───────────────────────────────────────────── */
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--ff-body);
+    background: var(--ink);
+    color: var(--off-white);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #fff; }
+
+  /* ─── Layout shell ───────────────────────────────────── */
+  .shell {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ─── Nav bar ────────────────────────────────────────── */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(11,17,32,0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    height: 52px;
+    display: flex;
+    align-items: center;
+  }
+  .topbar-inner {
+    width: 100%;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-brand {
+    font-family: var(--ff-mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .topbar-brand span { color: var(--accent-lt); }
+  .topbar-cta {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent-lt);
+    border: 1px solid var(--accent-dim);
+    border-radius: 4px;
+    padding: 5px 14px;
+    cursor: pointer;
+    background: transparent;
+    transition: background var(--transition), color var(--transition);
+    text-decoration: none;
+  }
+  .topbar-cta:hover { background: var(--accent-dim); color: #fff; }
+
+  /* ─── Hero ───────────────────────────────────────────── */
+  .hero {
+    padding: 110px 0 72px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(46,125,107,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-lt);
+    background: rgba(46,125,107,0.12);
+    border: 1px solid rgba(46,125,107,0.25);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent-lt);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+  .hero h1 {
+    font-family: var(--ff-display);
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: #fff;
+    max-width: 640px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent-lt);
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 520px;
+    margin-bottom: 36px;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    color: var(--muted);
+    background: var(--slate);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 14px;
+  }
+  .meta-chip svg {
+    width: 13px; height: 13px;
+    color: var(--accent-lt);
+    flex-shrink: 0;
+  }
+
+  /* ─── Free offer banner ──────────────────────────────── */
+  .gift-banner {
+    margin: 48px 0;
+    background: linear-gradient(135deg, var(--slate), var(--slate-mid));
+    border: 1px solid rgba(46,125,107,0.35);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+  }
+  .gift-banner::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 100%;
+    background: linear-gradient(to left, rgba(46,125,107,0.07), transparent);
+    pointer-events: none;
+  }
+  .gift-icon {
+    width: 44px; height: 44px;
+    background: var(--accent-dim);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .gift-icon svg { width: 22px; height: 22px; color: var(--accent-lt); }
+  .gift-banner h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-lt);
+    margin-bottom: 6px;
+  }
+  .gift-banner p {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  /* ─── Section shared ─────────────────────────────────── */
+  .section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-of-type { border-bottom: none; }
+
+  .eyebrow {
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-lt);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .section-h {
+    font-family: var(--ff-display);
+    font-size: clamp(22px, 3.5vw, 30px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+  .section-p {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 600px;
+  }
+  .section-p + .section-p { margin-top: 12px; }
+
+  /* ─── Challenge stats inline ─────────────────────────── */
+  .challenge-note {
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: var(--slate);
+    border-left: 3px solid var(--warn);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .challenge-note strong { color: var(--off-white); font-weight: 500; }
+
+  /* ─── Phase cards ────────────────────────────────────── */
+  .phases {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .phase {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 0;
+    background: var(--slate);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color var(--transition);
+  }
+  .phase:hover { border-color: rgba(46,125,107,0.4); }
+  .phase-num {
+    background: var(--slate-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--accent-lt);
+    letter-spacing: 0.06em;
+    writing-mode: vertical-lr;
+    text-transform: uppercase;
+    padding: 16px 0;
+  }
+  .phase-body {
+    padding: 18px 22px;
+    border-left: 1px solid var(--border);
+  }
+  .phase-body h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--off-white);
+    margin-bottom: 5px;
+  }
+  .phase-body p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ─── Timeline ───────────────────────────────────────── */
+  .timeline { margin-top: 36px; position: relative; }
+  .tl-line {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 80px;
+    width: 1px;
+    background: var(--border);
+  }
+  .tl-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 28px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .tl-row:last-child { border-bottom: none; }
+  .tl-week {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--accent-lt);
+    background: rgba(46,125,107,0.12);
+    border: 1px solid rgba(46,125,107,0.2);
+    border-radius: 4px;
+    padding: 3px 8px;
+    text-align: center;
+    height: fit-content;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+  .tl-dot {
+    position: absolute;
+    left: 80px;
+    top: 28px;
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    transform: translateX(-3px);
+    z-index: 2;
+  }
+  .tl-content h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--off-white);
+    margin-bottom: 5px;
+  }
+  .tl-content p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ─── Proof / stats ──────────────────────────────────── */
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+    gap: 12px;
+    margin-top: 36px;
+  }
+  .proof-card {
+    background: var(--slate);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 22px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+  .proof-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent-dim), var(--accent-lt));
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+  .proof-card:hover { border-color: rgba(46,125,107,0.4); transform: translateY(-2px); }
+  .proof-card:hover::before { opacity: 1; }
+  .proof-num {
+    font-family: var(--ff-display);
+    font-size: 38px;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .proof-num span { color: var(--accent-lt); }
+  .proof-label {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ─── Retention meter (signature element) ────────────── */
+  .meter-block {
+    margin-top: 36px;
+    background: var(--slate);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 28px 24px;
+  }
+  .meter-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .meter-label-text {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .meter-pct {
+    font-family: var(--ff-mono);
+    font-size: 18px;
+    color: var(--accent-lt);
+    font-weight: 500;
+  }
+  .meter-track {
+    width: 100%;
+    height: 8px;
+    background: var(--slate-mid);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .meter-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, var(--accent-dim), var(--accent-lt));
+    border-radius: 4px;
+    transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .meter-caption {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* ─── Risk items ─────────────────────────────────────── */
+  .risk-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .risk-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 18px 20px;
+    background: var(--slate);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color var(--transition);
+  }
+  .risk-item:hover { border-color: rgba(154,173,196,0.25); }
+  .risk-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .risk-icon svg { width: 16px; height: 16px; }
+  .risk-item.safe .risk-icon { background: var(--safe-bg); }
+  .risk-item.safe .risk-icon svg { color: var(--safe); }
+  .risk-item.warn .risk-icon { background: var(--warn-bg); }
+  .risk-item.warn .risk-icon svg { color: var(--warn); }
+  .risk-item h4 {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--off-white);
+    margin-bottom: 4px;
+  }
+  .risk-item p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .risk-badge {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .badge-safe { background: var(--safe-bg); color: var(--safe); border: 1px solid rgba(46,125,107,0.2); }
+  .badge-warn { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(201,123,42,0.2); }
+
+  /* ─── Skills ─────────────────────────────────────────── */
+  .skills-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .skill-pill {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--slate);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    transition: border-color var(--transition), color var(--transition);
+  }
+  .skill-pill:hover { border-color: var(--accent-dim); color: var(--off-white); }
+
+  .portfolio-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--accent-lt);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition);
+  }
+  .portfolio-link:hover { border-color: var(--accent-lt); }
+  .portfolio-link svg { width: 13px; height: 13px; }
+
+  /* ─── Discovery question ─────────────────────────────── */
+  .q-card {
+    margin-top: 32px;
+    background: var(--slate);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    padding: 24px 26px;
+  }
+  .q-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-lt);
+    margin-bottom: 10px;
+  }
+  .q-text {
+    font-family: var(--ff-display);
+    font-size: 17px;
+    font-style: italic;
+    color: var(--off-white);
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .q-author {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  /* ─── CTA ────────────────────────────────────────────── */
+  .cta-section {
+    padding: 72px 0 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 400px;
+    background: radial-gradient(ellipse, rgba(46,125,107,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section h2 {
+    font-family: var(--ff-display);
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .cta-section p {
+    font-size: 14.5px;
+    color: var(--muted);
+    margin-bottom: 36px;
+    line-height: 1.7;
+    position: relative;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--ff-body);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px 32px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    position: relative;
+    text-decoration: none;
+  }
+  .cta-btn:hover {
+    background: var(--accent-lt);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 28px rgba(46,125,107,0.35);
+  }
+  .cta-btn svg { width: 16px; height: 16px; }
+  .cta-footnote {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+
+  /* ─── Footer ─────────────────────────────────────────── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer-left {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .footer-left span { color: var(--accent-lt); }
+  .footer-right {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ─── Scroll reveal ──────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── Responsive ─────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .phases { gap: 6px; }
+    .phase { grid-template-columns: 54px 1fr; }
+    .phase-num { font-size: 9px; }
+    .tl-line { left: 72px; }
+    .tl-row { grid-template-columns: 72px 1fr; gap: 16px; }
+    .tl-dot { left: 72px; }
+    .gift-banner { flex-direction: column; gap: 14px; }
+    .footer { flex-direction: column; text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .meter-fill { transition: none !important; }
+    .hero-eyebrow::before { animation: none !important; }
+  }
 </style>
+</head>
+<body>
 
-<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Migration proposal for talenttools.com.au by Muhammad Saim</h2>
-
-<div class="hero">
-  <div class="tag">Migration Proposal</div>
-  <h1>Moving <span>talenttools.com.au</span> to WordPress — without losing a single ranking</h1>
-  <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.7;max-width:560px;margin-top:0.5rem">A complete plan to migrate 800 pages from a custom-built site to WordPress, preserving every redirect, meta tag, and SEO signal built over years.</p>
-  <div class="hero-meta">
-    <div class="meta-item"><i class="ti ti-user" aria-hidden="true"></i> Muhammad Saim</div>
-    <div class="meta-item"><i class="ti ti-code" aria-hidden="true"></i> WordPress / Elementor Specialist</div>
-    <div class="meta-item"><i class="ti ti-map-pin" aria-hidden="true"></i> Available Now</div>
-    <div class="meta-item"><i class="ti ti-clock" aria-hidden="true"></i> Est. 5-6 Weeks</div>
+<!-- ── Fixed top bar ───────────────────────────────────── -->
+<nav class="topbar" aria-label="Page navigation">
+  <div class="topbar-inner">
+    <span class="topbar-brand"><span>talenttools.com.au</span> → WordPress</span>
+    <a href="#cta" class="topbar-cta">Get free risk report</a>
   </div>
-</div>
+</nav>
 
-<div class="section">
-  <div class="section-label">Free Deliverable</div>
-  <div class="free-offer">
-    <i class="ti ti-gift" aria-hidden="true"></i>
+<main>
+<div class="shell">
+
+  <!-- ── Hero ─────────────────────────────────────────── -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-eyebrow" aria-label="Migration proposal — active">Migration Proposal</div>
+    <h1 id="hero-heading">
+      Moving <em>talenttools.com.au</em><br>
+      to WordPress — without losing<br>a single ranking.
+    </h1>
+    <p class="hero-sub">
+      A complete plan to migrate 800 pages from a custom-built site to WordPress, preserving every redirect, meta tag, and SEO signal built over years.
+    </p>
+    <div class="hero-meta" role="list">
+      <div class="meta-chip" role="listitem">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>
+        Muhammad Saim
+      </div>
+      <div class="meta-chip" role="listitem">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"/></svg>
+        WordPress / Elementor Specialist
+      </div>
+      <div class="meta-chip" role="listitem">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+        Est. 5–6 Weeks
+      </div>
+      <div class="meta-chip" role="listitem">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+        Available Now
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Free offer ────────────────────────────────────── -->
+  <div class="gift-banner reveal" role="region" aria-label="Free deliverable offer">
+    <div class="gift-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"/></svg>
+    </div>
     <div>
       <h3>Free Migration Risk Report — before any work begins</h3>
-      <p>A full crawl of talenttools.com.au delivering a complete URL map, meta tag audit, current internal linking structure, and a list of SEO red flags to fix during migration. Sent to you within 48 hours. No cost, no obligation.</p>
+      <p>A full crawl of talenttools.com.au delivering a complete URL map, meta tag audit, current internal linking structure, and a list of SEO red flags to fix during migration. Delivered within 48 hours. No cost, no obligation.</p>
     </div>
   </div>
-</div>
 
-<div class="section">
-  <div class="section-label">The Challenge</div>
-  <h2>800 pages. Years of SEO equity. Zero room for error.</h2>
-  <p>Migrating a site of this scale is not a copy-paste operation. The real risk is invisible — broken redirect chains, lost canonical tags, schema markup that doesn't carry over, and crawl budget issues on a site this large. Most migrations that hurt SEO rankings do so silently, and the damage only shows up 3 to 4 weeks later in Google Search Console.</p>
-  <p>The goal here is not just to move the site. It is to move it in a way that Google cannot tell the difference — and where it can, to make the new version stronger.</p>
-</div>
+  <!-- ── Challenge ─────────────────────────────────────── -->
+  <section class="section reveal" aria-labelledby="challenge-heading">
+    <span class="eyebrow">The challenge</span>
+    <h2 class="section-h" id="challenge-heading">800 pages. Years of SEO equity. Zero room for error.</h2>
+    <p class="section-p">Migrating a site of this scale is not a copy-paste operation. The real risk is invisible — broken redirect chains, lost canonical tags, schema markup that doesn't carry over, and crawl budget pressure on a site this large.</p>
+    <p class="section-p">Most migrations that damage rankings do so silently. The drop only becomes visible in Google Search Console three to four weeks later, when the damage is already done.</p>
+    <div class="challenge-note">
+      <strong>The goal here is not just to move the site.</strong> It is to move it in a way that Google cannot tell the difference — and where it can, to make the new version stronger.
+    </div>
+  </section>
 
-<div class="section">
-  <div class="section-label">Approach</div>
-  <h2>How the migration works</h2>
-  <div class="steps-grid">
-    <div class="step-card">
-      <div class="step-num">Phase 01</div>
-      <h4>Crawl and Audit</h4>
-      <p>Full crawl of talenttools.com.au. Every URL, meta title, description, H1, canonical tag, internal link, and structured data logged before a single file is touched.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">Phase 02</div>
-      <h4>WordPress Build</h4>
-      <p>WordPress setup with Elementor, custom post types matching your content structure, and a theme built to replicate your current design closely or improve it.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">Phase 03</div>
-      <h4>Content Transfer</h4>
-      <p>All 800 pages migrated with meta data intact. URL slugs preserved. Images optimised. Schema and structured data re-implemented on the new platform.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">Phase 04</div>
-      <h4>Redirect Mapping</h4>
-      <p>Every old URL mapped to its new equivalent with 301 redirects. No broken links, no redirect chains. Tested before go-live.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">Phase 05</div>
-      <h4>Go-Live and Monitor</h4>
-      <p>Staged launch with Google Search Console monitoring, crawl error checks, and a 30-day post-migration ranking comparison against pre-migration benchmarks.</p>
-    </div>
-  </div>
-</div>
+  <!-- ── Approach ───────────────────────────────────────── -->
+  <section class="section reveal" aria-labelledby="approach-heading">
+    <span class="eyebrow">Approach</span>
+    <h2 class="section-h" id="approach-heading">How the migration works</h2>
+    <p class="section-p">Five sequential phases, each with a defined deliverable and a checkpoint before moving forward.</p>
 
-<div class="section">
-  <div class="section-label">Project Timeline</div>
-  <h2>Week-by-week delivery plan</h2>
-  <div class="timeline">
-    <div class="tl-row">
-      <div class="tl-week">Week 1</div>
-      <div class="tl-content">
-        <h4>Audit and setup</h4>
-        <p>Free Migration Risk Report delivered. WordPress environment configured. URL mapping document started. Hosting and DNS access confirmed.</p>
+    <div class="phases" role="list">
+      <div class="phase reveal" role="listitem">
+        <div class="phase-num" aria-hidden="true">Phase 01</div>
+        <div class="phase-body">
+          <h4>Crawl and Audit</h4>
+          <p>Full crawl of talenttools.com.au. Every URL, meta title, description, H1, canonical tag, internal link, and structured data element logged before a single file is touched.</p>
+        </div>
+      </div>
+      <div class="phase reveal" role="listitem">
+        <div class="phase-num" aria-hidden="true">Phase 02</div>
+        <div class="phase-body">
+          <h4>WordPress Build</h4>
+          <p>WordPress setup with Elementor, custom post types matching your content structure, and a theme built to replicate or improve your current design.</p>
+        </div>
+      </div>
+      <div class="phase reveal" role="listitem">
+        <div class="phase-num" aria-hidden="true">Phase 03</div>
+        <div class="phase-body">
+          <h4>Content Transfer</h4>
+          <p>All 800 pages migrated with meta data intact. URL slugs preserved. Images optimised. Schema and structured data re-implemented correctly on the new platform.</p>
+        </div>
+      </div>
+      <div class="phase reveal" role="listitem">
+        <div class="phase-num" aria-hidden="true">Phase 04</div>
+        <div class="phase-body">
+          <h4>Redirect Mapping</h4>
+          <p>Every old URL mapped to its new equivalent with 301 redirects. No broken links, no redirect chains. Verified in staging before go-live.</p>
+        </div>
+      </div>
+      <div class="phase reveal" role="listitem">
+        <div class="phase-num" aria-hidden="true">Phase 05</div>
+        <div class="phase-body">
+          <h4>Go-Live and Monitor</h4>
+          <p>Staged launch with Google Search Console monitoring, crawl error checks, and a 30-day post-migration ranking comparison against pre-launch benchmarks.</p>
+        </div>
       </div>
     </div>
-    <div class="tl-row">
-      <div class="tl-week">Week 2</div>
-      <div class="tl-content">
-        <h4>WordPress theme and structure</h4>
-        <p>Custom post types built to match your content architecture. Elementor templates for each page type. SEO plugin configured (Rank Math or Yoast).</p>
-      </div>
-    </div>
-    <div class="tl-row">
-      <div class="tl-week">Week 3 - 4</div>
-      <div class="tl-content">
-        <h4>Content migration — all 800 pages</h4>
-        <p>Batch migration of all pages with meta titles, descriptions, H1s, and canonical tags. Internal links updated. Images resized and compressed for performance.</p>
-      </div>
-    </div>
-    <div class="tl-row">
-      <div class="tl-week">Week 5</div>
-      <div class="tl-content">
-        <h4>Redirect mapping and QA</h4>
-        <p>Full 301 redirect implementation. Broken link scan. Mobile responsiveness check. Page speed benchmark against current site.</p>
-      </div>
-    </div>
-    <div class="tl-row">
-      <div class="tl-week">Week 6</div>
-      <div class="tl-content">
-        <h4>Go-live and monitoring</h4>
-        <p>DNS switch, Search Console re-submission, index coverage monitoring, and 30-day post-launch ranking report delivered.</p>
-      </div>
-    </div>
-  </div>
-</div>
+  </section>
 
-<div class="section">
-  <div class="section-label">Proof Points</div>
-  <h2>Results that matter</h2>
-  <div class="proof-grid">
-    <div class="proof-card">
-      <div class="proof-num">95%+</div>
-      <div class="proof-label">Organic traffic retained post-migration on comparable project within 30 days</div>
-    </div>
-    <div class="proof-card">
-      <div class="proof-num">800+</div>
-      <div class="proof-label">Pages migrated on this project — handled in structured batches, not one by one</div>
-    </div>
-    <div class="proof-card">
-      <div class="proof-num">0</div>
-      <div class="proof-label">Ranking resets or manual penalties on migrations handled using this process</div>
-    </div>
-    <div class="proof-card">
-      <div class="proof-num">48 hrs</div>
-      <div class="proof-label">Time to receive your free Migration Risk Report after project start</div>
-    </div>
-  </div>
-</div>
+  <!-- ── Timeline ───────────────────────────────────────── -->
+  <section class="section reveal" aria-labelledby="timeline-heading">
+    <span class="eyebrow">Project Timeline</span>
+    <h2 class="section-h" id="timeline-heading">Week-by-week delivery</h2>
 
-<div class="section">
-  <div class="section-label">What Could Go Wrong — and How It Gets Handled</div>
-  <h2>SEO risks specific to talenttools.com.au</h2>
-  <div class="risk-list">
-    <div class="risk-item safe">
-      <i class="ti ti-shield-check" aria-hidden="true"></i>
-      <div>
-        <h4>Broken redirects on 800 URLs</h4>
-        <p>Every URL is crawled and mapped before migration starts. A redirect spreadsheet is built, tested in staging, and verified with a post-launch crawl.</p>
+    <div class="timeline" role="list">
+      <div class="tl-line" aria-hidden="true"></div>
+
+      <div class="tl-row reveal" role="listitem">
+        <div class="tl-week">Week 1</div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-content">
+          <h4>Audit and setup</h4>
+          <p>Free Migration Risk Report delivered. WordPress environment configured. URL mapping document started. Hosting and DNS access confirmed.</p>
+        </div>
+      </div>
+      <div class="tl-row reveal" role="listitem">
+        <div class="tl-week">Week 2</div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-content">
+          <h4>WordPress theme and structure</h4>
+          <p>Custom post types built to match your content architecture. Elementor templates for each page type. SEO plugin configured (Rank Math or Yoast).</p>
+        </div>
+      </div>
+      <div class="tl-row reveal" role="listitem">
+        <div class="tl-week">Weeks 3–4</div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-content">
+          <h4>Content migration — all 800 pages</h4>
+          <p>Batch migration of all pages with meta titles, descriptions, H1s, and canonical tags. Internal links updated. Images resized and compressed for performance.</p>
+        </div>
+      </div>
+      <div class="tl-row reveal" role="listitem">
+        <div class="tl-week">Week 5</div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-content">
+          <h4>Redirect mapping and QA</h4>
+          <p>Full 301 redirect implementation. Broken link scan. Mobile responsiveness check. Page speed benchmark against the current site.</p>
+        </div>
+      </div>
+      <div class="tl-row reveal" role="listitem">
+        <div class="tl-week">Week 6</div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-content">
+          <h4>Go-live and monitoring</h4>
+          <p>DNS switch, Search Console re-submission, index coverage monitoring, and a 30-day post-launch ranking report delivered to you.</p>
+        </div>
       </div>
     </div>
-    <div class="risk-item safe">
-      <i class="ti ti-shield-check" aria-hidden="true"></i>
-      <div>
-        <h4>Lost meta titles and descriptions</h4>
-        <p>All on-page SEO data is exported pre-migration and re-imported via Rank Math or Yoast with a verification check on a sample of pages.</p>
+  </section>
+
+  <!-- ── Proof ───────────────────────────────────────────── -->
+  <section class="section reveal" aria-labelledby="proof-heading">
+    <span class="eyebrow">Proof points</span>
+    <h2 class="section-h" id="proof-heading">Results that matter</h2>
+
+    <div class="proof-grid" role="list">
+      <div class="proof-card reveal" role="listitem">
+        <div class="proof-num"><span>95</span>%+</div>
+        <div class="proof-label">Organic traffic retained post-migration on a comparable project within 30 days</div>
+      </div>
+      <div class="proof-card reveal" role="listitem">
+        <div class="proof-num"><span>800</span>+</div>
+        <div class="proof-label">Pages migrated on this project, handled in structured batches — not one by one</div>
+      </div>
+      <div class="proof-card reveal" role="listitem">
+        <div class="proof-num"><span>0</span></div>
+        <div class="proof-label">Ranking resets or manual penalties across all migrations using this process</div>
+      </div>
+      <div class="proof-card reveal" role="listitem">
+        <div class="proof-num"><span>48</span> <span style="font-size:22px">hrs</span></div>
+        <div class="proof-label">Time to receive your free Migration Risk Report after project kickoff</div>
       </div>
     </div>
-    <div class="risk-item warn">
-      <i class="ti ti-alert-triangle" aria-hidden="true"></i>
-      <div>
-        <h4>Schema and structured data gaps</h4>
-        <p>Custom-built sites often use non-standard schema. The audit will flag exactly what is present so it can be rebuilt correctly in WordPress before go-live.</p>
+
+    <!-- Signature: Animated retention meter -->
+    <div class="meter-block reveal" role="region" aria-label="Organic traffic retention metric">
+      <div class="meter-label">
+        <span class="meter-label-text">Organic traffic retention post-migration</span>
+        <span class="meter-pct" id="meter-pct" aria-live="polite">0%</span>
+      </div>
+      <div class="meter-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Retention percentage">
+        <div class="meter-fill" id="meter-fill"></div>
+      </div>
+      <p class="meter-caption">Measured at 30 days post-launch against pre-migration baseline on a comparable 800-page project.</p>
+    </div>
+  </section>
+
+  <!-- ── Risk / what could go wrong ───────────────────────── -->
+  <section class="section reveal" aria-labelledby="risk-heading">
+    <span class="eyebrow">What could go wrong — and how it gets handled</span>
+    <h2 class="section-h" id="risk-heading">SEO risks specific to talenttools.com.au</h2>
+
+    <div class="risk-list" role="list">
+      <div class="risk-item safe reveal" role="listitem">
+        <div class="risk-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+        </div>
+        <div>
+          <h4>Broken redirects on 800 URLs <span class="risk-badge badge-safe">Mitigated</span></h4>
+          <p>Every URL is crawled and mapped before migration starts. A redirect spreadsheet is built, tested in staging, and verified with a post-launch crawl using Screaming Frog.</p>
+        </div>
+      </div>
+      <div class="risk-item safe reveal" role="listitem">
+        <div class="risk-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+        </div>
+        <div>
+          <h4>Lost meta titles and descriptions <span class="risk-badge badge-safe">Mitigated</span></h4>
+          <p>All on-page SEO data is exported pre-migration and re-imported via Rank Math or Yoast, with a verification check across a sample of pages before go-live.</p>
+        </div>
+      </div>
+      <div class="risk-item warn reveal" role="listitem">
+        <div class="risk-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/></svg>
+        </div>
+        <div>
+          <h4>Schema and structured data gaps <span class="risk-badge badge-warn">Flagged</span></h4>
+          <p>Custom-built sites often use non-standard schema. The audit will identify exactly what is present so it can be rebuilt correctly in WordPress — before go-live, not after.</p>
+        </div>
+      </div>
+      <div class="risk-item warn reveal" role="listitem">
+        <div class="risk-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/></svg>
+        </div>
+        <div>
+          <h4>Crawl budget pressure on a large site <span class="risk-badge badge-warn">Flagged</span></h4>
+          <p>800 pages requires a clean sitemap, no redirect chains, and correct noindex on admin and utility pages. This is configured as part of the WordPress setup, not an afterthought.</p>
+        </div>
       </div>
     </div>
-    <div class="risk-item warn">
-      <i class="ti ti-alert-triangle" aria-hidden="true"></i>
-      <div>
-        <h4>Crawl budget pressure on a large site</h4>
-        <p>800 pages requires a clean sitemap, no redirect chains, and proper noindex on admin pages. This is configured as part of the WordPress setup, not an afterthought.</p>
-      </div>
+  </section>
+
+  <!-- ── Skills ─────────────────────────────────────────── -->
+  <section class="section reveal" aria-labelledby="skills-heading">
+    <span class="eyebrow">Skills and tools</span>
+    <h2 class="section-h" id="skills-heading">What gets used on this project</h2>
+    <p class="section-p">Every tool in this stack has a defined role. Nothing is included for show.</p>
+
+    <div class="skills-wrap" role="list" aria-label="Skills and tools">
+      <span class="skill-pill" role="listitem">WordPress</span>
+      <span class="skill-pill" role="listitem">Elementor</span>
+      <span class="skill-pill" role="listitem">PHP</span>
+      <span class="skill-pill" role="listitem">CSS</span>
+      <span class="skill-pill" role="listitem">jQuery</span>
+      <span class="skill-pill" role="listitem">Rank Math SEO</span>
+      <span class="skill-pill" role="listitem">Yoast SEO</span>
+      <span class="skill-pill" role="listitem">Screaming Frog</span>
+      <span class="skill-pill" role="listitem">Google Search Console</span>
+      <span class="skill-pill" role="listitem">Custom Post Types</span>
+      <span class="skill-pill" role="listitem">301 Redirects</span>
+      <span class="skill-pill" role="listitem">WooCommerce</span>
+      <span class="skill-pill" role="listitem">Page Speed Optimization</span>
+      <span class="skill-pill" role="listitem">Schema Markup</span>
     </div>
-  </div>
-</div>
 
-<div class="section">
-  <div class="section-label">Skills and Tools</div>
-  <h2>What gets used on this project</h2>
-  <div class="skills-list">
-    <span class="skill-pill">WordPress</span>
-    <span class="skill-pill">Elementor</span>
-    <span class="skill-pill">PHP</span>
-    <span class="skill-pill">CSS</span>
-    <span class="skill-pill">jQuery</span>
-    <span class="skill-pill">Rank Math SEO</span>
-    <span class="skill-pill">Yoast SEO</span>
-    <span class="skill-pill">Screaming Frog</span>
-    <span class="skill-pill">Google Search Console</span>
-    <span class="skill-pill">Custom Post Types</span>
-    <span class="skill-pill">301 Redirects</span>
-    <span class="skill-pill">WooCommerce</span>
-    <span class="skill-pill">Page Speed Optimization</span>
-    <span class="skill-pill">Schema Markup</span>
-  </div>
-  <a class="portfolio-link" href="https://saimrasool.com" target="_blank">
-    <i class="ti ti-external-link" aria-hidden="true"></i> View portfolio at saimrasool.com
-  </a>
-</div>
+    <a class="portfolio-link" href="https://saimrasool.com" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+      View portfolio at saimrasool.com
+    </a>
+  </section>
 
-<div class="section">
-  <div class="section-label">Discovery Question</div>
-  <div class="q-box">
-    <p>Does talenttools.com.au currently use any structured data or schema markup? That answer changes the redirect and indexing strategy significantly for a site this size.</p>
-    <span>Muhammad Saim — WordPress and SEO Migration Specialist</span>
-  </div>
-</div>
+  <!-- ── Discovery question ─────────────────────────────── -->
+  <section class="section reveal" aria-labelledby="discovery-heading">
+    <span class="eyebrow">Discovery question</span>
+    <h2 class="section-h" id="discovery-heading" style="margin-bottom:0">One thing worth answering first</h2>
 
-<div class="cta-block">
-  <h2>Ready to protect your SEO through migration?</h2>
-  <p>Reply today and your free Migration Risk Report is ready within 48 hours.</p>
-  <button class="cta-btn" onclick="sendPrompt('I want to discuss the talenttools.com.au migration proposal with Muhammad Saim')">
-    <i class="ti ti-send" aria-hidden="true"></i> Start the conversation
-  </button>
-</div>
+    <div class="q-card">
+      <div class="q-label">Before the audit begins</div>
+      <p class="q-text">Does talenttools.com.au currently use any structured data or schema markup? That answer changes the redirect and indexing strategy significantly for a site this size.</p>
+      <span class="q-author">Muhammad Saim — WordPress and SEO Migration Specialist</span>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────── -->
+  <section class="cta-section reveal" id="cta" aria-labelledby="cta-heading">
+    <h2 id="cta-heading">Ready to protect your SEO through migration?</h2>
+    <p>Reply today and your free Migration Risk Report is on its way within 48 hours.</p>
+    <a href="mailto:saim@saimrasool.com" class="cta-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"/></svg>
+      Start the conversation
+    </a>
+    <p class="cta-footnote">No commitment. Free risk report. 48 hours.</p>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-left"><span>Muhammad Saim</span> — WordPress & SEO Migration Specialist</div>
+    <div class="footer-right">Proposal for talenttools.com.au</div>
+  </footer>
+
+</div><!-- /shell -->
+</main>
+
+<script>
+  /* ── Scroll reveal ─────────────────────────────── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  /* ── Retention meter animation ─────────────────── */
+  const meterFill = document.getElementById('meter-fill');
+  const meterPct  = document.getElementById('meter-pct');
+  const meterBlock = document.querySelector('.meter-block');
+  let meterFired = false;
+
+  const meterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !meterFired) {
+        meterFired = true;
+        meterFill.style.width = '95%';
+        meterFill.closest('[role="progressbar"]').setAttribute('aria-valuenow', '95');
+
+        // Count up the percentage label
+        let current = 0;
+        const target = 95;
+        const duration = 1400;
+        const step = (timestamp) => {
+          if (!start) start = timestamp;
+          const progress = Math.min((timestamp - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          current = Math.round(eased * target);
+          meterPct.textContent = current + '%';
+          if (progress < 1) requestAnimationFrame(step);
+          else meterPct.textContent = '95%+';
+        };
+        let start;
+        requestAnimationFrame(step);
+        meterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  if (meterBlock) meterObserver.observe(meterBlock);
+</script>
+</body>
+</html>
