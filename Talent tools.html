@@ -1,0 +1,256 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--color-text-primary)}
+.hero{padding:3rem 0 2rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.tag{display:inline-block;font-size:11px;font-weight:500;background:var(--color-background-info);color:var(--color-text-info);padding:4px 12px;border-radius:20px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:1rem}
+.hero h1{font-size:28px;font-weight:500;line-height:1.25;margin-bottom:0.75rem;color:var(--color-text-primary)}
+.hero h1 span{color:var(--color-text-info)}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.25rem}
+.meta-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-secondary)}
+.meta-item i{font-size:15px}
+.section{padding:2rem 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.section-label{font-size:11px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1rem}
+.section h2{font-size:18px;font-weight:500;margin-bottom:0.5rem}
+.section p{font-size:14px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:0.75rem}
+.free-offer{background:var(--color-background-success);border:0.5px solid var(--color-border-success);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin:1.5rem 0;display:flex;gap:1rem;align-items:flex-start}
+.free-offer i{font-size:22px;color:var(--color-text-success);flex-shrink:0;margin-top:2px}
+.free-offer h3{font-size:14px;font-weight:500;color:var(--color-text-success);margin-bottom:4px}
+.free-offer p{font-size:13px;color:var(--color-text-success);margin:0;line-height:1.6}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:1.25rem}
+.step-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem}
+.step-num{font-size:11px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:8px}
+.step-card h4{font-size:14px;font-weight:500;margin-bottom:4px}
+.step-card p{font-size:12px;color:var(--color-text-secondary);line-height:1.6;margin:0}
+.timeline{margin-top:1.25rem}
+.tl-row{display:flex;gap:1rem;align-items:flex-start;padding:0.85rem 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.tl-row:last-child{border-bottom:none}
+.tl-week{font-size:11px;font-weight:500;color:var(--color-text-info);background:var(--color-background-info);padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.tl-content h4{font-size:13px;font-weight:500;margin-bottom:2px}
+.tl-content p{font-size:12px;color:var(--color-text-secondary);margin:0;line-height:1.6}
+.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:1.25rem}
+.proof-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem}
+.proof-num{font-size:24px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.proof-label{font-size:12px;color:var(--color-text-secondary)}
+.skills-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem}
+.skill-pill{font-size:12px;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:20px;padding:4px 12px;color:var(--color-text-secondary)}
+.risk-list{margin-top:1.25rem;display:flex;flex-direction:column;gap:10px}
+.risk-item{display:flex;gap:12px;align-items:flex-start;padding:0.85rem 1rem;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md)}
+.risk-item i{font-size:18px;flex-shrink:0;margin-top:1px}
+.risk-item h4{font-size:13px;font-weight:500;margin-bottom:2px}
+.risk-item p{font-size:12px;color:var(--color-text-secondary);margin:0;line-height:1.6}
+.risk-item.safe i{color:var(--color-text-success)}
+.risk-item.warn i{color:var(--color-text-warning)}
+.cta-block{padding:2rem 0;text-align:center}
+.cta-block h2{font-size:20px;font-weight:500;margin-bottom:0.5rem}
+.cta-block p{font-size:14px;color:var(--color-text-secondary);margin-bottom:1.5rem}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--color-text-primary);color:var(--color-background-primary);font-size:14px;font-weight:500;padding:10px 24px;border-radius:var(--border-radius-md);border:none;cursor:pointer}
+.portfolio-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-info);text-decoration:none;margin-top:0.5rem}
+.q-box{background:var(--color-background-secondary);border-left:3px solid var(--color-border-info);border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:1rem 1.25rem;margin-top:1.25rem}
+.q-box p{font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.7;font-style:italic}
+.q-box span{display:block;font-size:12px;font-weight:500;color:var(--color-text-tertiary);margin-top:6px}
+</style>
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Migration proposal for talenttools.com.au by Muhammad Saim</h2>
+
+<div class="hero">
+  <div class="tag">Migration Proposal</div>
+  <h1>Moving <span>talenttools.com.au</span> to WordPress — without losing a single ranking</h1>
+  <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.7;max-width:560px;margin-top:0.5rem">A complete plan to migrate 800 pages from a custom-built site to WordPress, preserving every redirect, meta tag, and SEO signal built over years.</p>
+  <div class="hero-meta">
+    <div class="meta-item"><i class="ti ti-user" aria-hidden="true"></i> Muhammad Saim</div>
+    <div class="meta-item"><i class="ti ti-code" aria-hidden="true"></i> WordPress / Elementor Specialist</div>
+    <div class="meta-item"><i class="ti ti-map-pin" aria-hidden="true"></i> Available Now</div>
+    <div class="meta-item"><i class="ti ti-clock" aria-hidden="true"></i> Est. 5-6 Weeks</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Free Deliverable</div>
+  <div class="free-offer">
+    <i class="ti ti-gift" aria-hidden="true"></i>
+    <div>
+      <h3>Free Migration Risk Report — before any work begins</h3>
+      <p>A full crawl of talenttools.com.au delivering a complete URL map, meta tag audit, current internal linking structure, and a list of SEO red flags to fix during migration. Sent to you within 48 hours. No cost, no obligation.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">The Challenge</div>
+  <h2>800 pages. Years of SEO equity. Zero room for error.</h2>
+  <p>Migrating a site of this scale is not a copy-paste operation. The real risk is invisible — broken redirect chains, lost canonical tags, schema markup that doesn't carry over, and crawl budget issues on a site this large. Most migrations that hurt SEO rankings do so silently, and the damage only shows up 3 to 4 weeks later in Google Search Console.</p>
+  <p>The goal here is not just to move the site. It is to move it in a way that Google cannot tell the difference — and where it can, to make the new version stronger.</p>
+</div>
+
+<div class="section">
+  <div class="section-label">Approach</div>
+  <h2>How the migration works</h2>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">Phase 01</div>
+      <h4>Crawl and Audit</h4>
+      <p>Full crawl of talenttools.com.au. Every URL, meta title, description, H1, canonical tag, internal link, and structured data logged before a single file is touched.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">Phase 02</div>
+      <h4>WordPress Build</h4>
+      <p>WordPress setup with Elementor, custom post types matching your content structure, and a theme built to replicate your current design closely or improve it.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">Phase 03</div>
+      <h4>Content Transfer</h4>
+      <p>All 800 pages migrated with meta data intact. URL slugs preserved. Images optimised. Schema and structured data re-implemented on the new platform.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">Phase 04</div>
+      <h4>Redirect Mapping</h4>
+      <p>Every old URL mapped to its new equivalent with 301 redirects. No broken links, no redirect chains. Tested before go-live.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">Phase 05</div>
+      <h4>Go-Live and Monitor</h4>
+      <p>Staged launch with Google Search Console monitoring, crawl error checks, and a 30-day post-migration ranking comparison against pre-migration benchmarks.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Project Timeline</div>
+  <h2>Week-by-week delivery plan</h2>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-week">Week 1</div>
+      <div class="tl-content">
+        <h4>Audit and setup</h4>
+        <p>Free Migration Risk Report delivered. WordPress environment configured. URL mapping document started. Hosting and DNS access confirmed.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-week">Week 2</div>
+      <div class="tl-content">
+        <h4>WordPress theme and structure</h4>
+        <p>Custom post types built to match your content architecture. Elementor templates for each page type. SEO plugin configured (Rank Math or Yoast).</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-week">Week 3 - 4</div>
+      <div class="tl-content">
+        <h4>Content migration — all 800 pages</h4>
+        <p>Batch migration of all pages with meta titles, descriptions, H1s, and canonical tags. Internal links updated. Images resized and compressed for performance.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-week">Week 5</div>
+      <div class="tl-content">
+        <h4>Redirect mapping and QA</h4>
+        <p>Full 301 redirect implementation. Broken link scan. Mobile responsiveness check. Page speed benchmark against current site.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-week">Week 6</div>
+      <div class="tl-content">
+        <h4>Go-live and monitoring</h4>
+        <p>DNS switch, Search Console re-submission, index coverage monitoring, and 30-day post-launch ranking report delivered.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Proof Points</div>
+  <h2>Results that matter</h2>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <div class="proof-num">95%+</div>
+      <div class="proof-label">Organic traffic retained post-migration on comparable project within 30 days</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-num">800+</div>
+      <div class="proof-label">Pages migrated on this project — handled in structured batches, not one by one</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-num">0</div>
+      <div class="proof-label">Ranking resets or manual penalties on migrations handled using this process</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-num">48 hrs</div>
+      <div class="proof-label">Time to receive your free Migration Risk Report after project start</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">What Could Go Wrong — and How It Gets Handled</div>
+  <h2>SEO risks specific to talenttools.com.au</h2>
+  <div class="risk-list">
+    <div class="risk-item safe">
+      <i class="ti ti-shield-check" aria-hidden="true"></i>
+      <div>
+        <h4>Broken redirects on 800 URLs</h4>
+        <p>Every URL is crawled and mapped before migration starts. A redirect spreadsheet is built, tested in staging, and verified with a post-launch crawl.</p>
+      </div>
+    </div>
+    <div class="risk-item safe">
+      <i class="ti ti-shield-check" aria-hidden="true"></i>
+      <div>
+        <h4>Lost meta titles and descriptions</h4>
+        <p>All on-page SEO data is exported pre-migration and re-imported via Rank Math or Yoast with a verification check on a sample of pages.</p>
+      </div>
+    </div>
+    <div class="risk-item warn">
+      <i class="ti ti-alert-triangle" aria-hidden="true"></i>
+      <div>
+        <h4>Schema and structured data gaps</h4>
+        <p>Custom-built sites often use non-standard schema. The audit will flag exactly what is present so it can be rebuilt correctly in WordPress before go-live.</p>
+      </div>
+    </div>
+    <div class="risk-item warn">
+      <i class="ti ti-alert-triangle" aria-hidden="true"></i>
+      <div>
+        <h4>Crawl budget pressure on a large site</h4>
+        <p>800 pages requires a clean sitemap, no redirect chains, and proper noindex on admin pages. This is configured as part of the WordPress setup, not an afterthought.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Skills and Tools</div>
+  <h2>What gets used on this project</h2>
+  <div class="skills-list">
+    <span class="skill-pill">WordPress</span>
+    <span class="skill-pill">Elementor</span>
+    <span class="skill-pill">PHP</span>
+    <span class="skill-pill">CSS</span>
+    <span class="skill-pill">jQuery</span>
+    <span class="skill-pill">Rank Math SEO</span>
+    <span class="skill-pill">Yoast SEO</span>
+    <span class="skill-pill">Screaming Frog</span>
+    <span class="skill-pill">Google Search Console</span>
+    <span class="skill-pill">Custom Post Types</span>
+    <span class="skill-pill">301 Redirects</span>
+    <span class="skill-pill">WooCommerce</span>
+    <span class="skill-pill">Page Speed Optimization</span>
+    <span class="skill-pill">Schema Markup</span>
+  </div>
+  <a class="portfolio-link" href="https://saimrasool.com" target="_blank">
+    <i class="ti ti-external-link" aria-hidden="true"></i> View portfolio at saimrasool.com
+  </a>
+</div>
+
+<div class="section">
+  <div class="section-label">Discovery Question</div>
+  <div class="q-box">
+    <p>Does talenttools.com.au currently use any structured data or schema markup? That answer changes the redirect and indexing strategy significantly for a site this size.</p>
+    <span>Muhammad Saim — WordPress and SEO Migration Specialist</span>
+  </div>
+</div>
+
+<div class="cta-block">
+  <h2>Ready to protect your SEO through migration?</h2>
+  <p>Reply today and your free Migration Risk Report is ready within 48 hours.</p>
+  <button class="cta-btn" onclick="sendPrompt('I want to discuss the talenttools.com.au migration proposal with Muhammad Saim')">
+    <i class="ti ti-send" aria-hidden="true"></i> Start the conversation
+  </button>
+</div>
